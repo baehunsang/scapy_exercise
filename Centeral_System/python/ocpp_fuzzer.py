@@ -14,7 +14,9 @@ async def send_fuzzed_boot_notification():
                                 "93e69619-58c7-49a8-bbf6-3f418ef172e9",
                                 "BootNotification",
                                 {"chargePointModel":"Optimus",
-                                    "chargePointVendor":"The Mobility House"
+                                    "chargePointVendor":"The Mobility House",
+                                    "chargePointSerialNumber":"1234123412341234",
+                                    "chargeBoxSerialNumber":"5678567856785678"
                                 }
                             ]
 

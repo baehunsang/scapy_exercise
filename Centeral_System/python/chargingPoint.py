@@ -23,7 +23,7 @@ logging.basicConfig(level=logging.INFO)
 class ChargePoint(cp):
     async def send_boot_notification(self):
         request = call.BootNotificationPayload(
-            charge_point_model="chargingx", charge_point_vendor="tesla"
+            charge_point_model="chargingx", charge_point_vendor="tesla", charge_box_serial_number="5678567856785678",charge_point_serial_number="1234123412341234"  
         )
 
         response = await self.call(request)

@@ -32,7 +32,8 @@ db_config = {
 class ChargePoint(cp):
     @on(Action.BootNotification)
     async def on_boot_notification(
-        self, charge_point_vendor: str, charge_point_model: str, **kwargs
+        self, charge_point_vendor: str, charge_point_model: str, charge_box_serial_number: Optional[str] = None,
+        charge_point_serial_number: Optional[str] = None, **kwargs
     ):
         # Connect to MySQL Database
         db_connection = pymysql.connect(**db_config)
@@ -40,8 +41,8 @@ class ChargePoint(cp):
 
         # Query the database to check if the charge point is valid
         cursor.execute(
-            "SELECT * FROM boot_notification WHERE chargePointVendor = %s AND chargePointModel = %s",
-            (charge_point_vendor, charge_point_model)
+            "SELECT * FROM boot_notification WHERE chargePointVendor = %s AND chargePointModel = %s AND chargePointSerialNumber = %s AND chargeBoxSerialNumber = %s",
+            (charge_point_vendor, charge_point_model, charge_point_serial_number, charge_box_serial_number)
         )
         result = cursor.fetchone()
         
